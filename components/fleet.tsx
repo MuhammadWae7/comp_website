@@ -40,7 +40,7 @@ export default function Fleet() {
               className="flex flex-col bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden"
             >
               {/* Vehicle Image */}
-              <div className="w-full h-64 bg-gray-200 flex items-center justify-center overflow-hidden">
+              <div className="w-full h-96 bg-gray-200 flex items-center justify-center overflow-hidden">
                 <img
                   src={`/images/${vehicle.image}`}
                   alt={vehicle.name}
