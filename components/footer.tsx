@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
+import EmailButton from "./email-button";
 
 export default function Footer() {
   return (
@@ -99,12 +100,7 @@ export default function Footer() {
             <ul className="space-y-4 text-base">
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 mt-0.5 flex-shrink-0 text-yellow-500" />
-                <a
-                  href="mailto:elsewedyforlandtransport@gmail.com?subject=استفسار&body=مرحبا"
-                  className="hover:text-white transition-colors font-light break-all"
-                >
-                  elsewedyforlandtransport@gmail.com
-                </a>
+                <EmailButton />
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 mt-0.5 flex-shrink-0 text-yellow-500" />
