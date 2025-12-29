@@ -42,7 +42,7 @@ export default function Fleet() {
               {/* Vehicle Image */}
               <div className="w-full h-64 bg-gray-200 flex items-center justify-center overflow-hidden">
                 <img
-                  src={`/.jpg?height=280&width=400&query=${vehicle.image}`}
+                  src={`/images/${vehicle.image}`}
                   alt={vehicle.name}
                   className="w-full h-full object-cover"
                 />
