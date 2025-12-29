@@ -6,32 +6,19 @@ import { X, Send } from "lucide-react";
 export default function EmailButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
   const handleSend = () => {
     if (!message.trim()) return;
 
-    setIsLoading(true);
-    try {
-      // Open Gmail with the message
-      const mailtoLink = `mailto:elsewedyforlandtransport@gmail.com?subject=رسالة من موقع شركة السويدي&body=${encodeURIComponent(
-        message
-      )}`;
-      window.location.href = mailtoLink;
+    // Open email client with the message
+    const mailtoLink = `mailto:ahmedmohamed44556@gmail.com?subject=رسالة من موقع شركة السويدي&body=${encodeURIComponent(
+      message
+    )}`;
+    window.location.href = mailtoLink;
 
-      setStatus("success");
-      setMessage("");
-      setTimeout(() => {
-        setIsOpen(false);
-        setStatus("idle");
-      }, 1500);
-    } catch (error) {
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 3000);
-    } finally {
-      setIsLoading(false);
-    }
+    // Close modal
+    setMessage("");
+    setIsOpen(false);
   };
 
   return (
@@ -47,11 +34,10 @@ export default function EmailButton() {
                 onClick={() => {
                   setIsOpen(false);
                   setMessage("");
-                  setStatus("idle");
                 }}
-                className="text-gray-500 hover:text-gray-700 transition"
+                className="text-gray-500 hover:text-gray-700"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
@@ -59,23 +45,10 @@ export default function EmailButton() {
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="اكتب رسالتك هنا..."
+              placeholder="اكتب رسالتك..."
               rows={5}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none transition resize-none mb-4 text-gray-900"
             />
-
-            {/* Status Messages */}
-            {status === "success" && (
-              <div className="p-3 bg-green-100 border border-green-400 text-green-700 rounded-lg mb-4 text-sm">
-                شكراً! سيتم فتح بريدك الإلكتروني لإرسال الرسالة.
-              </div>
-            )}
-
-            {status === "error" && (
-              <div className="p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg mb-4 text-sm">
-                حدث خطأ. يرجى المحاولة مرة أخرى.
-              </div>
-            )}
 
             {/* Buttons */}
             <div className="flex gap-3">
@@ -83,7 +56,6 @@ export default function EmailButton() {
                 onClick={() => {
                   setIsOpen(false);
                   setMessage("");
-                  setStatus("idle");
                 }}
                 className="flex-1 px-4 py-3 border border-gray-300 text-gray-700 font-bold rounded-lg hover:bg-gray-50 transition"
               >
@@ -91,23 +63,23 @@ export default function EmailButton() {
               </button>
               <button
                 onClick={handleSend}
-                disabled={isLoading || !message.trim()}
+                disabled={!message.trim()}
                 className="flex-1 bg-yellow-500 hover:bg-yellow-600 disabled:bg-gray-400 text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
               >
                 <Send className="w-5 h-5" />
-                {isLoading ? "جاري..." : "إرسال"}
+                إرسال
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Email Button */}
+      {/* Email Link Button */}
       <button
         onClick={() => setIsOpen(true)}
         className="hover:text-white transition-colors font-light break-all text-left"
       >
-        elsewedyforlandtransport@gmail.com
+        ahmedmohamed44556@gmail.com
       </button>
     </>
   );
